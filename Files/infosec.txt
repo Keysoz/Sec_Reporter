@@ -1,0 +1,6 @@
+1
+Name -> Bcrypt — Account TakeOver Due To Weak Encryption — #HR51KDB
+Read More -> https://infosecwriteups.com/bcrypt-account-takeover-due-to-weak-encryption-hr51kdb-4418f6e65907
+Published at -> 2020-11-29
+Written By -> DarkLotus 
+<------------------------------------------->
