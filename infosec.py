@@ -9,13 +9,14 @@ import subprocess
 from src import banner
 from src.banner import Colors
 color = Colors()
+os.environ['MOZ_HEADLESS'] = '1' # make the Browser runs in the background
+options = webdriver.FirefoxOptions() # Initialize WebDriver
+driver = webdriver.Firefox(options=options)
+scroll_pause_time = 2  # Pause between each scroll
+screen_height = driver.execute_script("return window.screen.height;")  # Browser window height
+
 
 def get_by_keyword(keyword):
-    os.environ['MOZ_HEADLESS'] = '1' # make the Browser runs in the background
-    options = webdriver.FirefoxOptions() # Initialize WebDriver
-    driver = webdriver.Firefox(options=options)
-    scroll_pause_time = 2  # Pause between each scroll
-    screen_height = driver.execute_script("return window.screen.height;")  # Browser window height
     i = 1
     count = 1
     # Open the URL of the webpage
@@ -66,11 +67,6 @@ def get_by_keyword(keyword):
     print(f"\n\n--> ({color.CGREEN2}{count - 1} Write-Ups Was Found{color.ENDC}) <--")
     
 def get_by_date():
-    os.environ['MOZ_HEADLESS'] = '1' # make the Browser runs in the background
-    options = webdriver.FirefoxOptions() # Initialize WebDriver
-    driver = webdriver.Firefox(options=options)
-    scroll_pause_time = 2  # Pause between each scroll
-    screen_height = driver.execute_script("return window.screen.height;")  # Browser window height
     i = 1
     URL = "https://infosecwriteups.com/"
     driver.get(URL)
@@ -129,4 +125,6 @@ if __name__ == "__main__":
         get_by_keyword(keyword)
     elif option == 3:
         raise SystemExit
+    else:
+        raise ValueError
     subprocess.run(['cat', 'Files/infosec.txt'])
